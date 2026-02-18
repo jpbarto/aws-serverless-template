@@ -20,19 +20,17 @@ A serverless URL shortener REST API built with AWS Lambda, API Gateway, and Dyna
 
 ```
 .
-├── src/
-│   └── lambda/
-│       ├── index.js        # Lambda function code
-│       └── package.json    # Node.js dependencies
-├── terraform/
-│   ├── provider.tf          # Terraform provider configuration
-│   ├── variables.tf         # Input variables
-│   ├── outputs.tf           # Output values
-│   ├── dynamodb.tf          # DynamoDB table definition
-│   ├── iam.tf              # IAM roles and policies
-│   ├── lambda.tf           # Lambda function configuration
-│   ├── api-gateway.tf      # API Gateway REST API
-│   └── api-resources.tf    # API Gateway resources and methods
+├── provider.tf          # Terraform provider configuration
+├── variables.tf         # Input variables
+├── outputs.tf           # Output values
+├── dynamodb.tf          # DynamoDB table definition
+├── iam.tf              # IAM roles and policies
+├── lambda.tf           # Lambda function configuration
+├── api-gateway.tf      # API Gateway REST API
+├── api-resources.tf    # API Gateway resources and methods
+├── lambda/
+│   ├── index.js        # Lambda function code
+│   └── package.json    # Node.js dependencies
 └── README.md           # This file
 ```
 
@@ -41,15 +39,14 @@ A serverless URL shortener REST API built with AWS Lambda, API Gateway, and Dyna
 ### 1. Install Lambda Dependencies
 
 ```bash
-cd src/lambda
+cd lambda
 npm install
-cd ../..
+cd ..
 ```
 
 ### 2. Initialize Terraform
 
 ```bash
-cd terraform
 terraform init
 ```
 
@@ -239,8 +236,7 @@ The API returns standard HTTP status codes:
 ### Complete Workflow Example
 
 ```bash
-# Set your API endpoint (run from terraform directory)
-cd terraform
+# Set your API endpoint
 API_ENDPOINT=$(terraform output -raw api_endpoint)
 
 # Create a shortened URL
@@ -268,7 +264,6 @@ curl -X DELETE $API_ENDPOINT/urls/github
 To destroy all resources created by Terraform:
 
 ```bash
-cd terraform
 terraform destroy
 ```
 
