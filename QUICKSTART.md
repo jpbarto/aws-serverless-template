@@ -4,20 +4,21 @@
 
 ### 1. Install Lambda Dependencies
 ```bash
-cd lambda
+cd src/lambda
 npm install
-cd ..
+cd ../..
 ```
 
 ### 2. Deploy with Terraform
 ```bash
+cd terraform
 terraform init
 terraform apply
 ```
 
 ### 3. Test Your API
 ```bash
-# Get the API endpoint
+# Get the API endpoint (from terraform directory)
 API_ENDPOINT=$(terraform output -raw api_endpoint)
 
 # Create a short URL

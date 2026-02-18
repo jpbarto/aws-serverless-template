@@ -1,0 +1,13 @@
+# Example Terraform variables
+# Copy this file to terraform.tfvars and customize as needed
+
+# aws_region          = "us-east-1"
+# environment         = "dev"
+# dynamodb_table_name = "url-shortener"
+# lambda_function_name = "url-shortener-api"
+# api_gateway_name    = "url-shortener-api"
+# api_stage_name      = "prod"
+
+# LocalStack configuration for local development
+# use_localstack      = true
+# localstack_endpoint = "http://localhost:4566"
