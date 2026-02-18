@@ -15,9 +15,29 @@ override.tf.json
 # Lambda deployment package
 lambda-deployment.zip
 
+# Node.js dependencies
+node_modules/
+package-lock.json
+
 # Lambda dependencies
 lambda/node_modules/
 lambda/package-lock.json
+src/lambda/node_modules/
+src/lambda/package-lock.json
+
+# Test dependencies and coverage
+tests/node_modules/
+tests/package-lock.json
+tests/coverage/
+coverage/
+*.lcov
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS files
 .DS_Store
@@ -29,4 +49,13 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Environment files
 .env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
