@@ -1,0 +1,32 @@
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+*.tfvars
+!terraform.tfvars.example
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Lambda deployment package
+lambda-deployment.zip
+
+# Lambda dependencies
+lambda/node_modules/
+lambda/package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.env
