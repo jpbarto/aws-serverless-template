@@ -15,9 +15,16 @@ func (m *Shorturl) UnitTest(
 	// Build output from the Build function (if not provided, will build from source)
 	buildArtifact *dagger.File,
 ) (string, error) {
-	output, err := dag.Container().
-		From("alpine:latest").
-		WithExec([]string{"echo", "this is the UnitTest function"}).
+	// Create a Node.js container with bash support
+	testContainer := dag.Container().
+		From("node:18-slim").
+		WithDirectory("/workspace", source).
+		WithWorkdir("/workspace")
+
+	// Execute the run-unit-tests.sh script
+	println("Running unit tests...")
+	output, err := testContainer.
+		WithExec([]string{"bash", "tests/run-unit-tests.sh"}).
 		Stdout(ctx)
 
 	if err != nil {

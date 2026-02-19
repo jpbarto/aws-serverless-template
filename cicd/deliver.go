@@ -26,7 +26,7 @@ func (m *Shorturl) Deliver(
 ) (string, error) {
 	output, err := dag.Container().
 		From("alpine:latest").
-		WithExec([]string{"echo", "this is the Deliver function"}).
+		WithExec([]string{"echo", "There are no packages to be delivered."}).
 		Stdout(ctx)
 
 	if err != nil {

@@ -12,6 +12,8 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
+output
+
 # Lambda deployment package
 lambda-deployment.zip
 
