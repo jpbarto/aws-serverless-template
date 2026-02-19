@@ -46,9 +46,28 @@ func (m *Shorturl) IntegrationTest(
 	// Target port (default: 8080)
 	targetPort string,
 ) (string, error) {
-	output, err := dag.Container().
-		From("alpine:latest").
-		WithExec([]string{"echo", "this is the IntegrationTest function"}).
+	// Set defaults
+	if targetHost == "" {
+		targetHost = "localhost"
+	}
+	if targetPort == "" {
+		targetPort = "8080"
+	}
+
+	// Construct the API URL
+	apiUrl := "http://" + targetHost + ":" + targetPort
+
+	// Create a container with curl and bash for running the integration tests
+	testContainer := dag.Container().
+		From("curlimages/curl:latest").
+		WithExec([]string{"sh", "-c", "apk add --no-cache bash"}).
+		WithDirectory("/workspace", source).
+		WithWorkdir("/workspace")
+
+	// Execute the run-integration-tests.sh script
+	println("Running integration tests against:", apiUrl)
+	output, err := testContainer.
+		WithExec([]string{"bash", "tests/run-integration-tests.sh", apiUrl}).
 		Stdout(ctx)
 
 	if err != nil {
